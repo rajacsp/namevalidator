@@ -25,7 +25,7 @@ public class Name {
 	public static Name createInstance(final String wordsFile) {
 		if(instance == null){
 			TrieConfig tf = new TrieConfig();
-			//tf.setCaseInsensitive(true);
+			tf.setCaseInsensitive(true);
 			trie = new Trie(tf);
 			instance = new Name(wordsFile);
 		}
@@ -33,7 +33,7 @@ public class Name {
 	}
 	
 	private Name(final String wordsFile) {
-		System.out.println("==================== init ForumNick with WordsFile ====================");
+		//ystem.out.println("==================== init ForumNick with WordsFile ====================");
 		loadProhibitedWords(wordsFile);
 	}
 	
@@ -59,11 +59,11 @@ public class Name {
 		try {
 			String words = IOUtils.toString(resource.getInputStream());
 			String[] pwords = words.split(",");
-			System.out.println("[ForumNick][loadProhibitedWords] length - " + pwords.length);
+			//System.out.println("[ForumNick][loadProhibitedWords] length - " + pwords.length);
 			for(String word:pwords) {
 				trie.addKeyword(word.trim());
 			}
-			System.out.println(words);
+			//System.out.println(words);
 		} catch (IOException e) {
 			System.out.println("[ForumNick][loadProhibitedWords][error] cannot load Prohibited Words for Forum");
 			e.printStackTrace();
@@ -78,12 +78,12 @@ public class Name {
 	}
 	
 	public boolean isNameAllowed(String name) {
-		System.out.println("{isNameAllowed} name : "+name);
+		//System.out.println("{isNameAllowed} name : "+name);
 		Collection<Emit> e = trie.parseText(name);
 		Iterator<Emit> it = e.iterator();
 		while(it.hasNext()) {
 			Emit emit = it.next();
-			System.out.println("prohibited words - " + emit.getKeyword());
+			System.out.println(name+" is in the list prohibited words - " + emit.getKeyword());
 		}
 		return (e.size() > 0)?false:true;
 	}
