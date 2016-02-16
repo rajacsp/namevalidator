@@ -6,6 +6,7 @@ import java.util.Iterator;
 
 import org.ahocorasick.trie.Emit;
 import org.ahocorasick.trie.Trie;
+import org.ahocorasick.trie.TrieConfig;
 import org.apache.commons.io.IOUtils;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -19,10 +20,13 @@ public class Name {
 	@Getter @Setter
 	private static Name instance;
 	
-	private static final Trie trie = new Trie();
+	private static Trie trie = new Trie();
 	
 	public static Name createInstance(final String wordsFile) {
 		if(instance == null){
+			TrieConfig tf = new TrieConfig();
+			//tf.setCaseInsensitive(true);
+			trie = new Trie(tf);
 			instance = new Name(wordsFile);
 		}
 		return instance;

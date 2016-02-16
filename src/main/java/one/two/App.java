@@ -17,7 +17,7 @@ public class App {
 	
 	
 	public static void main(String[] args) {
-		boolean flag = Name.getInstance().isNameAllowed("ass");
+		boolean flag = Name.getInstance().isNameAllowed("PuTa");
 		System.out.println(flag);
 	}
 	
