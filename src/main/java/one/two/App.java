@@ -10,10 +10,12 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.Resource;
 
 /**
- *
+ * Name Validator Test File
  *
  */
 public class App {
+	
+	
 	public static void main(String[] args) {
 		boolean flag = Name.getInstance().isNameAllowed("ass");
 		System.out.println(flag);
